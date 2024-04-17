@@ -18,26 +18,23 @@ const getFoods=asyncHundler(async (req, res) => {
           if (!food) {
             return res.status(404).json({status:"fail",message:"food not found"});
           }
+          
           res.json(food);
         } )
 
-      const updateFood=async (req, res) => {
-        try{ const food = await FoodModel.findByIdAndUpdate(req.params.id, req.body, {
+      const updateFood=asyncHundler(async (req, res) => {
+        const food = await FoodModel.findByIdAndUpdate(req.params.id, req.body, {
            new: true,
          }); 
-         res.json(food) }
-         catch(e){
-             res.json(e.message)
-         }
+         res.json(food) 
+        
        }
-
-       const deleteFood= async (req, res) => {
-        try{ const food = await FoodModel.findByIdAndDelete(req.params.id,  {
+)
+       const deleteFood=asyncHundler( async (req, res) => {
+       const food = await FoodModel.findByIdAndDelete(req.params.id,  {
            new: true,
          }); 
-         res.json(food) }
-         catch(e){
-             res.json(e.message)
-         }
-       }
+         res.json(food) 
+     
+       })
   module.exports={getFoods,addFood,findFood,updateFood,deleteFood}

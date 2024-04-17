@@ -2,7 +2,7 @@ const mongoose=require('mongoose');
 
 const favoriteSchema=mongoose.Schema({
     foods:[{type:mongoose.Schema.Types.ObjectId,ref:"food"}],
-    user_Id:{type:mongoose.Schema.Types.ObjectId,ref:"user"}
+    user_id:{type:mongoose.Schema.Types.ObjectId,ref:"user"}
 
 })
 
